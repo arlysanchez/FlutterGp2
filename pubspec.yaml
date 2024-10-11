@@ -43,6 +43,9 @@ dependencies:
   injectable: ^2.4.4
   equatable: ^2.0.5
   shared_preferences: ^2.3.2
+  image_picker: ^1.1.2
+  path: ^1.9.0
+  http_parser: ^4.1.0
 
 dev_dependencies:
   flutter_test:
