@@ -2,6 +2,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shopy_file_gp2/injection.dart';
 import 'package:shopy_file_gp2/src/domain/useCases/auth/AuthUseCases.dart';
 import 'package:shopy_file_gp2/src/domain/useCases/categories/CategoriesUseCases.dart';
+import 'package:shopy_file_gp2/src/presentation/pages/admin/category/create/bloc/AdminCategoryCreateBloc.dart';
+import 'package:shopy_file_gp2/src/presentation/pages/admin/category/create/bloc/AdminCategoryCreateEvent.dart';
 import 'package:shopy_file_gp2/src/presentation/pages/admin/category/list/bloc/AdminCategoryListBloc.dart';
 import 'package:shopy_file_gp2/src/presentation/pages/admin/home/bloc/AdminHomeBloc.dart';
 import 'package:shopy_file_gp2/src/presentation/pages/auth/login/bloc/LoginBloc.dart';
@@ -24,4 +26,8 @@ List<BlocProvider> blocProvider = [
   BlocProvider<AdminCategoryListBloc>(
       create: (context) =>
           AdminCategoryListBloc(locator<CategoriesUseCases>())),
+          BlocProvider<AdminCategoryCreateBloc>(
+      create: (context) =>
+          AdminCategoryCreateBloc(locator<CategoriesUseCases>())
+            ..add(AdminCategoryCreateInitEvent())),
 ];
