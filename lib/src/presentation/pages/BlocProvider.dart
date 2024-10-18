@@ -5,6 +5,7 @@ import 'package:shopy_file_gp2/src/domain/useCases/categories/CategoriesUseCases
 import 'package:shopy_file_gp2/src/presentation/pages/admin/category/create/bloc/AdminCategoryCreateBloc.dart';
 import 'package:shopy_file_gp2/src/presentation/pages/admin/category/create/bloc/AdminCategoryCreateEvent.dart';
 import 'package:shopy_file_gp2/src/presentation/pages/admin/category/list/bloc/AdminCategoryListBloc.dart';
+import 'package:shopy_file_gp2/src/presentation/pages/admin/category/update/bloc/AdminCategoryUpdateBloc.dart';
 import 'package:shopy_file_gp2/src/presentation/pages/admin/home/bloc/AdminHomeBloc.dart';
 import 'package:shopy_file_gp2/src/presentation/pages/auth/login/bloc/LoginBloc.dart';
 import 'package:shopy_file_gp2/src/presentation/pages/auth/login/bloc/LoginEvent.dart';
@@ -30,4 +31,7 @@ List<BlocProvider> blocProvider = [
       create: (context) =>
           AdminCategoryCreateBloc(locator<CategoriesUseCases>())
             ..add(AdminCategoryCreateInitEvent())),
+      BlocProvider<AdminCategoryUpdateBloc>(
+      create: (context) =>
+          AdminCategoryUpdateBloc(locator<CategoriesUseCases>()))
 ];

@@ -4,6 +4,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shopy_file_gp2/injection.dart';
 import 'package:shopy_file_gp2/src/presentation/pages/BlocProvider.dart';
 import 'package:shopy_file_gp2/src/presentation/pages/admin/category/create/AdminCategoryCreatePage.dart';
+import 'package:shopy_file_gp2/src/presentation/pages/admin/category/update/AdminCategoryUpdatePage.dart';
 import 'package:shopy_file_gp2/src/presentation/pages/admin/home/AdminHomePage.dart';
 import 'package:shopy_file_gp2/src/presentation/pages/auth/login/LoginPage.dart';
 import 'package:shopy_file_gp2/src/presentation/pages/auth/register/RegisterPage.dart';
@@ -23,25 +24,26 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: blocProvider,
-    child: MaterialApp(
-      builder: FToastBuilder(),//activar las notificaciones de forma global
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
-        useMaterial3: true,
-      ),
-      initialRoute: 'login',
-      routes: {
-        'login': (BuildContext context) => LoginPage(),
-        'register': (BuildContext context) => RegisterPage(),
-        'client/home':(BuildContext context) =>ClientHomePage(),
-        'admin/home':(BuildContext context) =>AdminHomePage(),
-        'admin/category/create': (BuildContext context) =>
+      child: MaterialApp(
+        builder: FToastBuilder(), //activar las notificaciones de forma global
+        debugShowCheckedModeBanner: false,
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
+          useMaterial3: true,
+        ),
+        initialRoute: 'login',
+        routes: {
+          'login': (BuildContext context) => LoginPage(),
+          'register': (BuildContext context) => RegisterPage(),
+          'client/home': (BuildContext context) => ClientHomePage(),
+          'admin/home': (BuildContext context) => AdminHomePage(),
+          'admin/category/create': (BuildContext context) =>
               AdminCategoryCreatePage(),
-      },
-    ),
+          'admin/category/update': (BuildContext context) =>
+              AdminCategoryUpdatePage(),
+        },
+      ),
     );
-
   }
 }
