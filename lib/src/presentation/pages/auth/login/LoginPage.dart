@@ -43,7 +43,7 @@ class _LoginPageState extends State<LoginPage> {
           WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
             Navigator.pushNamedAndRemoveUntil(
                 context,
-                'client/home',
+                'admin/home',
                 (route) =>
                     false); //enviar a la pagina de roles, despues de guardar el usuario
           });

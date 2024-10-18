@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shopy_file_gp2/injection.dart';
 import 'package:shopy_file_gp2/src/presentation/pages/BlocProvider.dart';
+import 'package:shopy_file_gp2/src/presentation/pages/admin/home/AdminHomePage.dart';
 import 'package:shopy_file_gp2/src/presentation/pages/auth/login/LoginPage.dart';
 import 'package:shopy_file_gp2/src/presentation/pages/auth/register/RegisterPage.dart';
 import 'package:shopy_file_gp2/src/presentation/pages/client/home/ClientHomePage.dart';
@@ -34,6 +35,7 @@ class MyApp extends StatelessWidget {
         'login': (BuildContext context) => LoginPage(),
         'register': (BuildContext context) => RegisterPage(),
         'client/home':(BuildContext context) =>ClientHomePage(),
+        'admin/home':(BuildContext context) =>AdminHomePage(),
       },
     ),
     );

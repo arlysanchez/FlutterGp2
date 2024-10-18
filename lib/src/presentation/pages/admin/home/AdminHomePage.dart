@@ -1,36 +1,36 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shopy_file_gp2/main.dart';
-import 'package:shopy_file_gp2/src/presentation/pages/client/category/list/ClientCategoryListPage.dart';
-import 'package:shopy_file_gp2/src/presentation/pages/client/home/bloc/ClientHomeBloc.dart';
-import 'package:shopy_file_gp2/src/presentation/pages/client/home/bloc/ClientHomeEvent.dart';
-import 'package:shopy_file_gp2/src/presentation/pages/client/home/bloc/ClientHomeState.dart';
+import 'package:shopy_file_gp2/src/presentation/pages/admin/category/list/AdminCategoryListPage.dart';
+import 'package:shopy_file_gp2/src/presentation/pages/admin/home/bloc/AdminHomeBloc.dart';
+import 'package:shopy_file_gp2/src/presentation/pages/admin/home/bloc/AdminHomeEvent.dart';
+import 'package:shopy_file_gp2/src/presentation/pages/admin/home/bloc/AdminHomeState.dart';
 
-class ClientHomePage extends StatefulWidget {
-  const ClientHomePage({super.key});
+class AdminHomePage extends StatefulWidget {
+  const AdminHomePage({super.key});
 
   @override
-  State<ClientHomePage> createState() => _ClientHomePageState();
+  State<AdminHomePage> createState() => _AdminHomePageState();
 }
 
-class _ClientHomePageState extends State<ClientHomePage> {
-  ClientHomeBloc? _bloc;
+class _AdminHomePageState extends State<AdminHomePage> {
+  AdminHomeBloc? _bloc;
 
   List<Widget> pageList = <Widget>[
-   ClientCategoryListPage()
+   AdminCategoryListPage(),
 
 
   ];
 
   @override
   Widget build(BuildContext context) {
-    _bloc = BlocProvider.of<ClientHomeBloc>(context);
+    _bloc = BlocProvider.of<AdminHomeBloc>(context);
     return Scaffold(
       appBar: AppBar(
         title: Text('Home'),
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.blue,
       ),
-      drawer : BlocBuilder<ClientHomeBloc,ClientHomeState>(
+      drawer : BlocBuilder<AdminHomeBloc,AdminHomeState>(
         builder: (context,state){
       return Drawer(
         child: ListView(
@@ -51,19 +51,19 @@ class _ClientHomePageState extends State<ClientHomePage> {
             ),
             ListTile(
               leading: Icon(Icons.home),
-              iconColor: Colors.black,
+              iconColor: Colors.green,
               title: Text('Categorias'),
               selected: state.pageIndex == 0,
               onTap: () {
-                _bloc?.add(ClientChangeDrawerPage(pageIndex: 0));
+                _bloc?.add(AdminChangeDrawerPage(pageIndex: 0));
               },
             ),
             ListTile(
               leading: Icon(Icons.logout),
-              iconColor: Colors.black,
+              iconColor: Colors.green,
               title: Text('Cerrar Sesion'),
               onTap: () {
-                _bloc?.add(ClientLogout());
+                _bloc?.add(AdminLogout());
                 Navigator.pushAndRemoveUntil(
                   context,
                   MaterialPageRoute(builder: (context) => MyApp()),
@@ -76,7 +76,7 @@ class _ClientHomePageState extends State<ClientHomePage> {
       );
     }
       ),
-    body:BlocBuilder<ClientHomeBloc, ClientHomeState>(
+    body:BlocBuilder<AdminHomeBloc, AdminHomeState>(
      builder: (context, state){
       return pageList[state.pageIndex];
      }

@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shopy_file_gp2/injection.dart';
 import 'package:shopy_file_gp2/src/domain/useCases/auth/AuthUseCases.dart';
+import 'package:shopy_file_gp2/src/presentation/pages/admin/home/bloc/AdminHomeBloc.dart';
 import 'package:shopy_file_gp2/src/presentation/pages/auth/login/bloc/LoginBloc.dart';
 import 'package:shopy_file_gp2/src/presentation/pages/auth/login/bloc/LoginEvent.dart';
 import 'package:shopy_file_gp2/src/presentation/pages/auth/register/bloc/RegisterBloc.dart';
@@ -16,5 +17,7 @@ BlocProvider<RegisterBloc>(
  BlocProvider<ClientHomeBloc>(
       create: (context) => ClientHomeBloc(locator<AuthUseCases>())),
 
+ BlocProvider<AdminHomeBloc>(
+      create: (context) => AdminHomeBloc(locator<AuthUseCases>())),
 
 ];
