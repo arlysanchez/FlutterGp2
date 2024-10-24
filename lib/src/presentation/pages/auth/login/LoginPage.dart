@@ -18,11 +18,12 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   LoginBloc? _bloc;
 
-@override
+  @override
   void initState() {
     super.initState();
   }
-@override
+
+  @override
   Widget build(BuildContext context) {
     _bloc = BlocProvider.of<LoginBloc>(context);
 
@@ -37,16 +38,25 @@ class _LoginPageState extends State<LoginPage> {
         } else if (responseState is Success) {
           final authResponse = responseState.data as AuthResponse;
           //_bloc?.add(LoginFormReset());
-        _bloc?.add(LoginSaveSession(authResponse: authResponse));
+          _bloc?.add(LoginSaveSession(authResponse: authResponse));
           Fluttertoast.showToast(
-              msg: 'Login exitoso', toastLength: Toast.LENGTH_LONG); 
-          WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-            Navigator.pushNamedAndRemoveUntil(
-                context,
-                'admin/home',
-                (route) =>
-                    false); //enviar a la pagina de roles, despues de guardar el usuario
-          });
+              msg: 'Login exitoso', toastLength: Toast.LENGTH_LONG);
+          if (authResponse.user.roles != null) {
+            final role = authResponse.user.roles!.first;
+            if (role?.id == 'CLIENT') {
+              // Si el  rol es 'CLIENT', redirigir al HomePage del cliente
+              WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+                Navigator.pushNamedAndRemoveUntil(
+                    context, 'client/home', (route) => false);
+              });
+            } else {
+              // Si el  rol es 'ADMIN', redirigir al HomePage del cliente
+              WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+                Navigator.pushNamedAndRemoveUntil(
+                    context, 'admin/home', (route) => false);
+              });
+            }
+          }
         }
       }, child: BlocBuilder<LoginBloc, LoginState>(builder: (context, state) {
         final responseState = state.response;
@@ -61,7 +71,5 @@ class _LoginPageState extends State<LoginPage> {
         return LoginContent(_bloc, state);
       })),
     ));
-
   }
- 
-  }
+}

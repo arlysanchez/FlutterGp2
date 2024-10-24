@@ -30,7 +30,6 @@ class RegisterContent extends StatelessWidget {
           ),
           Container(
             width: MediaQuery.of(context).size.width * 0.75,
-            height: MediaQuery.of(context).size.height * 0.80,
             decoration: BoxDecoration(
               color: Color.fromRGBO(255, 255, 255, 0.3),
               borderRadius: BorderRadius.all(Radius.circular(25)),
@@ -125,9 +124,10 @@ class RegisterContent extends StatelessWidget {
                       onPressed: () {
                         if (state.formKey!.currentState!.validate()) {
                           bloc?.add(RegisterFormSubmit());
-                        }else{
-                          Fluttertoast.showToast(msg: 'el formulario no es valido', 
-                          toastLength: Toast.LENGTH_LONG);
+                        } else {
+                          Fluttertoast.showToast(
+                              msg: 'el formulario no es valido',
+                              toastLength: Toast.LENGTH_LONG);
                         }
                       },
                       style: ElevatedButton.styleFrom(

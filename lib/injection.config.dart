@@ -16,15 +16,21 @@ import 'package:shopy_file_gp2/src/data/dataSource/remote/services/AuthServices.
     as _i849;
 import 'package:shopy_file_gp2/src/data/dataSource/remote/services/CategoriesService.dart'
     as _i671;
+import 'package:shopy_file_gp2/src/data/dataSource/remote/services/ProductsService.dart'
+    as _i561;
 import 'package:shopy_file_gp2/src/di/AppModule.dart' as _i900;
 import 'package:shopy_file_gp2/src/domain/repository/AuthRepository.dart'
     as _i902;
 import 'package:shopy_file_gp2/src/domain/repository/CategoriesRepository.dart'
     as _i579;
+import 'package:shopy_file_gp2/src/domain/repository/ProductsRepository.dart'
+    as _i712;
 import 'package:shopy_file_gp2/src/domain/useCases/auth/AuthUseCases.dart'
     as _i406;
 import 'package:shopy_file_gp2/src/domain/useCases/categories/CategoriesUseCases.dart'
     as _i588;
+import 'package:shopy_file_gp2/src/domain/useCases/products/ProductsUseCases.dart'
+    as _i21;
 
 extension GetItInjectableX on _i174.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -42,11 +48,14 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factoryAsync<String>(() => appModule.token);
     gh.factory<_i849.AuthServices>(() => appModule.authServices);
     gh.factory<_i671.CategoriesService>(() => appModule.categoriesService);
+    gh.factory<_i561.ProductsService>(() => appModule.productsService);
     gh.factory<_i902.AuthRepository>(() => appModule.authRepository);
     gh.factory<_i579.CategoriesRepository>(
         () => appModule.categoriesRepository);
+    gh.factory<_i712.ProductsRepository>(() => appModule.productsRepository);
     gh.factory<_i406.AuthUseCases>(() => appModule.authUseCases);
     gh.factory<_i588.CategoriesUseCases>(() => appModule.categoriesUseCases);
+    gh.factory<_i21.ProductsUseCases>(() => appModule.productsUseCases);
     return this;
   }
 }

@@ -13,7 +13,7 @@ class AdminCategoryListItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // Navigator.pushNamed(context, 'admin/product/list', arguments: category);
+        Navigator.pushNamed(context, 'admin/product/list', arguments: category);
       },
       child: ListTile(
         leading: category != null
@@ -40,35 +40,38 @@ class AdminCategoryListItem extends StatelessWidget {
                 },
                 icon: Icon(Icons.edit)),
             IconButton(
-  onPressed: () {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text("Confirmar eliminación"),
-          content: Text("¿Estás seguro de que deseas eliminar esta categoría?"),
-          actions: [
-            TextButton(
               onPressed: () {
-                Navigator.of(context).pop(); // Cerrar el diálogo sin eliminar
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return AlertDialog(
+                      title: Text("Confirmar eliminación"),
+                      content: Text(
+                          "¿Estás seguro de que deseas eliminar esta categoría?"),
+                      actions: [
+                        TextButton(
+                          onPressed: () {
+                            Navigator.of(context)
+                                .pop(); // Cerrar el diálogo sin eliminar
+                          },
+                          child: Text("Cancelar"),
+                        ),
+                        TextButton(
+                          onPressed: () {
+                            bloc?.add(DeleteCategory(
+                                id: category!.id!)); // Eliminar categoría
+                            Navigator.of(context)
+                                .pop(); // Cerrar el diálogo después de eliminar
+                          },
+                          child: Text("Eliminar"),
+                        ),
+                      ],
+                    );
+                  },
+                );
               },
-              child: Text("Cancelar"),
+              icon: Icon(Icons.delete),
             ),
-            TextButton(
-              onPressed: () {
-                bloc?.add(DeleteCategory(id: category!.id!)); // Eliminar categoría
-                Navigator.of(context).pop(); // Cerrar el diálogo después de eliminar
-              },
-              child: Text("Eliminar"),
-            ),
-          ],
-        );
-      },
-    );
-  },
-  icon: Icon(Icons.delete),
-)
-,
           ],
         ),
       ),

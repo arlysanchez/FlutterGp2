@@ -6,9 +6,13 @@ import 'package:shopy_file_gp2/src/presentation/pages/BlocProvider.dart';
 import 'package:shopy_file_gp2/src/presentation/pages/admin/category/create/AdminCategoryCreatePage.dart';
 import 'package:shopy_file_gp2/src/presentation/pages/admin/category/update/AdminCategoryUpdatePage.dart';
 import 'package:shopy_file_gp2/src/presentation/pages/admin/home/AdminHomePage.dart';
+import 'package:shopy_file_gp2/src/presentation/pages/admin/product/create/AdminProductCreatePage.dart';
+import 'package:shopy_file_gp2/src/presentation/pages/admin/product/list/AdminProductListPage.dart';
+import 'package:shopy_file_gp2/src/presentation/pages/admin/product/update/AdminProductUpdatePage.dart';
 import 'package:shopy_file_gp2/src/presentation/pages/auth/login/LoginPage.dart';
 import 'package:shopy_file_gp2/src/presentation/pages/auth/register/RegisterPage.dart';
 import 'package:shopy_file_gp2/src/presentation/pages/client/home/ClientHomePage.dart';
+import 'package:shopy_file_gp2/src/presentation/pages/client/product/list/ClienteProductListPage.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -42,6 +46,14 @@ class MyApp extends StatelessWidget {
               AdminCategoryCreatePage(),
           'admin/category/update': (BuildContext context) =>
               AdminCategoryUpdatePage(),
+          'admin/product/list': (BuildContext context) =>
+              AdminProductListPage(),
+          'admin/product/create': (BuildContext context) =>
+              AdminProductCreatePage(),
+          'admin/product/update': (BuildContext context) =>
+              AdminProductUpdatePage(),
+          'client/product/list': (BuildContext context) =>
+              ClientProductListPage(),
         },
       ),
     );
