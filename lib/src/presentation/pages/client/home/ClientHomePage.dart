@@ -25,6 +25,16 @@ class _ClientHomePageState extends State<ClientHomePage> {
         appBar: AppBar(
           title: Text('Home'),
           backgroundColor: Colors.green,
+          actions: [
+            IconButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, 'client/shopping_bag');
+                },
+                icon: Icon(
+                  Icons.shopping_bag,
+                  color: Colors.black,
+                ))
+          ],
         ),
         drawer: BlocBuilder<ClientHomeBloc, ClientHomeState>(
             builder: (context, state) {

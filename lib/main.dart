@@ -11,7 +11,11 @@ import 'package:shopy_file_gp2/src/presentation/pages/admin/product/list/AdminPr
 import 'package:shopy_file_gp2/src/presentation/pages/admin/product/update/AdminProductUpdatePage.dart';
 import 'package:shopy_file_gp2/src/presentation/pages/auth/login/LoginPage.dart';
 import 'package:shopy_file_gp2/src/presentation/pages/auth/register/RegisterPage.dart';
+import 'package:shopy_file_gp2/src/presentation/pages/client/ShoppingBag/ClientShoppingBagPage.dart';
+import 'package:shopy_file_gp2/src/presentation/pages/client/address/create/ClientAddressCreatePage.dart';
+import 'package:shopy_file_gp2/src/presentation/pages/client/address/list/ClientAddressListPage.dart';
 import 'package:shopy_file_gp2/src/presentation/pages/client/home/ClientHomePage.dart';
+import 'package:shopy_file_gp2/src/presentation/pages/client/product/detail/ClientProductDetailPage.dart';
 import 'package:shopy_file_gp2/src/presentation/pages/client/product/list/ClienteProductListPage.dart';
 
 void main() async {
@@ -54,6 +58,14 @@ class MyApp extends StatelessWidget {
               AdminProductUpdatePage(),
           'client/product/list': (BuildContext context) =>
               ClientProductListPage(),
+          'client/product/detail': (BuildContext context) =>
+              ClientProductDetailPage(),
+          'client/shopping_bag': (BuildContext context) =>
+              ClientShoppingBagPage(),
+          'client/address/list': (BuildContext context) =>
+              ClientAddressListPage(),
+          'client/address/create': (BuildContext context) =>
+              ClientAddressCreatePage(),
         },
       ),
     );

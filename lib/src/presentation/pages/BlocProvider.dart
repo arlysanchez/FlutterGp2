@@ -1,5 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shopy_file_gp2/injection.dart';
+import 'package:shopy_file_gp2/src/domain/useCases/ShoppingBag/ShoppingBagUseCases.dart';
+import 'package:shopy_file_gp2/src/domain/useCases/address/AddressUseCases.dart';
 import 'package:shopy_file_gp2/src/domain/useCases/auth/AuthUseCases.dart';
 import 'package:shopy_file_gp2/src/domain/useCases/categories/CategoriesUseCases.dart';
 import 'package:shopy_file_gp2/src/domain/useCases/products/ProductsUseCases.dart';
@@ -15,8 +17,13 @@ import 'package:shopy_file_gp2/src/presentation/pages/auth/login/bloc/LoginBloc.
 import 'package:shopy_file_gp2/src/presentation/pages/auth/login/bloc/LoginEvent.dart';
 import 'package:shopy_file_gp2/src/presentation/pages/auth/register/bloc/RegisterBloc.dart';
 import 'package:shopy_file_gp2/src/presentation/pages/auth/register/bloc/RegisterEvent.dart';
+import 'package:shopy_file_gp2/src/presentation/pages/client/ShoppingBag/bloc/ClientShoppingBagBloc.dart';
+import 'package:shopy_file_gp2/src/presentation/pages/client/address/create/bloc/ClientAddressCreateBloc.dart';
+import 'package:shopy_file_gp2/src/presentation/pages/client/address/create/bloc/ClientAddressCreateEvent.dart';
+import 'package:shopy_file_gp2/src/presentation/pages/client/address/list/bloc/ClientAddressListBloc.dart';
 import 'package:shopy_file_gp2/src/presentation/pages/client/category/list/bloc/ClienteCategoryListBloc.dart';
 import 'package:shopy_file_gp2/src/presentation/pages/client/home/bloc/ClientHomeBloc.dart';
+import 'package:shopy_file_gp2/src/presentation/pages/client/product/detail/bloc/ClientProductDetailBloc.dart';
 import 'package:shopy_file_gp2/src/presentation/pages/client/product/list/bloc/ClienteProductListBloc.dart';
 
 List<BlocProvider> blocProvider = [
@@ -51,4 +58,17 @@ List<BlocProvider> blocProvider = [
           ClienteCategoryListBloc(locator<CategoriesUseCases>())),
   BlocProvider<ClienteProductListBloc>(
       create: (context) => ClienteProductListBloc(locator<ProductsUseCases>())),
+  BlocProvider<ClientProductDetailBloc>(
+      create: (context) =>
+          ClientProductDetailBloc(locator<ShoppingBagUseCases>())),
+  BlocProvider<ClientShoppingBagBloc>(
+      create: (context) =>
+          ClientShoppingBagBloc(locator<ShoppingBagUseCases>())),
+  BlocProvider<ClientAddressListBloc>(
+      create: (context) => ClientAddressListBloc(
+          locator<AddressUseCases>(), locator<AuthUseCases>())),
+  BlocProvider<ClientAddressCreateBloc>(
+      create: (context) => ClientAddressCreateBloc(
+          locator<AddressUseCases>(), locator<AuthUseCases>())
+        ..add(ClientAddressCreateInitEvent())),
 ];
